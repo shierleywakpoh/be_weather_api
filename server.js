@@ -35,7 +35,7 @@ app.get("/", (req, res) => {
 app.get("/api/:kota", async (req, res) => {
   try {
     const kota = req.params.kota;
-    if (!kota) return res.status(400).json({ message: "tidak ada kotanya" });
+    if (!kota) return res.status(400).json({ message: "missing city" });
     const a =
       "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/";
 
@@ -54,7 +54,7 @@ app.get("/api/:kota", async (req, res) => {
       });
       res.status(201).json(data.data.currentConditions);
     } else {
-      return res.json({ message: "data tidak ada" });
+      return res.json({ message: "missing data" });
     }
   } catch (error) {
     return res.status(500).json({
