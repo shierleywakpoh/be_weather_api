@@ -5,8 +5,6 @@ import "dotenv/config";
 import { rateLimit } from "express-rate-limit";
 import { createClient } from "redis";
 
-console.log("bisa");
-
 const client = createClient({
   socket: {
     host: "127.0.0.1",
@@ -29,7 +27,7 @@ client.on("error", (err) => console.log("Redis Client Error", err));
 await client.connect();
 
 app.get("/", (req, res) => {
-  res.json({ message: "bisa" });
+  res.json({ message: "sucessfully" });
 });
 
 app.get("/api/:kota", async (req, res) => {
